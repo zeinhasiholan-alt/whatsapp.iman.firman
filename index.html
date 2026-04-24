@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #111b21;
+            color: #e9edef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111b21;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-logo {
+            font-size: 60px;
+            color: #8696a0;
+            margin-bottom: 40px;
+        }
+
+        .progress-container {
+            width: 300px;
+            height: 3px;
+            background-color: #233138;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #00a884;
+            animation: load 2s forwards;
+        }
+
+        @keyframes load {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* Main Content */
+        .content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wa-logo-main {
+            font-size: 80px;
+            color: #25d366;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #d1d7db;
+        }
+
+        .btn-wa {
+            background-color: #00a884;
+            color: #111b21;
+            padding: 12px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-wa:hover {
+            background-color: #06cf9c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="loader-logo">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <p style="margin-top: 20px; color: #8696a0; font-size: 14px; letter-spacing: 1px;">WHATSAPP</p>
+    </div>
+
+    <div class="content" id="main-content">
+        <div class="wa-logo-main">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <h1>Hubungi iman melalui WhatsApp</h1>
+        <a href="https://wa.me/6281217976179" target="_blank" class="btn-wa">
+            <i class="fab fa-whatsapp"></i>
+            Kirim Pesan
+        </a>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            const content = document.getElementById('main-content');
+
+            // Simulasi loading selama 2.5 detik
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.classList.add('show');
+                }, 500);
+            }, 2500);
+        });
+    </script>
+</body>
+</html>
